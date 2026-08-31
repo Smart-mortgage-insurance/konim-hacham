@@ -1,0 +1,436 @@
+<title>קונים חכם</title>
+<meta name="description" content="עוזר קניות חכם שקורא את הביקורות בשבילך ואומר לך מה כדאי לקנות ב-AliExpress, Temu ו-Amazon." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Suez+One&family=Heebo:wght@400;500;700;800;900&family=Rubik:wght@500;600&display=swap" />
+
+<style>
+  :root {
+    --ground: #f2f5f1;
+    --paper: #ffffff;
+    --ink: #16211c;
+    --muted: #5c6b62;
+    --line: #e2e8e2;
+    --brand: #0f9d6e;
+    --brand-deep: #0a6b4c;
+    --brand-wash: #e6f4ee;
+    --pop: #ff6b4a;
+    --pop-wash: #ffe9e3;
+    --star: #f4a209;
+    --shadow: 0 18px 50px -24px rgba(16, 45, 33, .35);
+    --shadow-sm: 0 6px 20px -12px rgba(16, 45, 33, .4);
+    --maxw: 1120px;
+    --r: 18px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0d1411;
+      --paper: #15201b;
+      --ink: #e9f0ea;
+      --muted: #9fb0a6;
+      --line: #263630;
+      --brand: #2ed89b;
+      --brand-deep: #46e6ac;
+      --brand-wash: #12271f;
+      --pop: #ff7d5e;
+      --pop-wash: #2a1a15;
+      --star: #ffbe3d;
+      --shadow: 0 18px 50px -24px rgba(0, 0, 0, .6);
+      --shadow-sm: 0 6px 20px -12px rgba(0, 0, 0, .6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0d1411;
+    --paper: #15201b;
+    --ink: #e9f0ea;
+    --muted: #9fb0a6;
+    --line: #263630;
+    --brand: #2ed89b;
+    --brand-deep: #46e6ac;
+    --brand-wash: #12271f;
+    --pop: #ff7d5e;
+    --pop-wash: #2a1a15;
+    --star: #ffbe3d;
+    --shadow: 0 18px 50px -24px rgba(0, 0, 0, .6);
+    --shadow-sm: 0 6px 20px -12px rgba(0, 0, 0, .6);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    direction: rtl;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Heebo", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { font-family: "Suez One", Georgia, serif; font-weight: 400; line-height: 1.12; text-wrap: balance; }
+  a { color: inherit; text-decoration: none; }
+  .eyebrow {
+    font-family: "Rubik", sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--brand-deep);
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--ground) 82%, transparent);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: "Suez One", serif; font-size: 21px; }
+  .logo .mark {
+    width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center;
+    background: linear-gradient(140deg, var(--brand), var(--brand-deep));
+    color: #fff; font-size: 20px; box-shadow: var(--shadow-sm);
+  }
+  .nav-cta {
+    background: var(--ink); color: var(--ground);
+    padding: 10px 18px; border-radius: 999px; font-weight: 700; font-size: 15px;
+    transition: transform .15s;
+  }
+  .nav-cta:hover { transform: translateY(-1px); }
+
+  /* ===== HERO ===== */
+  .hero { padding: 60px 0 40px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 54px; align-items: center; }
+  .hero h1 { font-size: clamp(38px, 5.2vw, 62px); letter-spacing: -.01em; }
+  .hero h1 .hl { color: var(--brand-deep); position: relative; white-space: nowrap; }
+  .hero h1 .hl::after {
+    content: ""; position: absolute; inset-inline: -2px; bottom: 6px; height: 12px;
+    background: var(--brand-wash); z-index: -1; border-radius: 4px;
+  }
+  .lead { font-size: 20px; color: var(--muted); margin-top: 22px; max-width: 30ch; }
+  .cta-row { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--brand); color: #fff; font-weight: 800; font-size: 17px;
+    padding: 15px 28px; border-radius: 999px; box-shadow: var(--shadow-sm);
+    transition: transform .15s, box-shadow .15s; border: none; cursor: pointer;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .btn-ghost {
+    padding: 15px 24px; border-radius: 999px; font-weight: 700; font-size: 17px;
+    border: 1.5px solid var(--line); color: var(--ink); background: var(--paper);
+  }
+  .trust { display: flex; align-items: center; gap: 10px; margin-top: 26px; font-size: 14px; color: var(--muted); }
+  .trust .stars { color: var(--star); letter-spacing: 1px; }
+
+  /* ===== מוקאפ צ'אט (הויזואל המרכזי) ===== */
+  .mock {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 24px;
+    box-shadow: var(--shadow); overflow: hidden; position: relative;
+    transform: rotate(1.1deg);
+  }
+  .mock-top {
+    display: flex; align-items: center; gap: 10px; padding: 13px 16px;
+    border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--brand-wash) 60%, var(--paper));
+  }
+  .mock-top .mark { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
+    background: linear-gradient(140deg, var(--brand), var(--brand-deep)); color: #fff; font-size: 15px; }
+  .mock-top b { font-size: 15px; }
+  .mock-top small { color: var(--muted); font-size: 12px; }
+  .mock-prod {
+    display: flex; gap: 12px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--ground) 50%, var(--paper));
+  }
+  .mock-prod .thumb {
+    width: 46px; height: 46px; border-radius: 10px; flex: 0 0 auto;
+    background: linear-gradient(135deg, #ffd9a8, #ff9d6b); display: grid; place-items: center; font-size: 22px;
+  }
+  .mock-prod .pname { font-size: 13.5px; font-weight: 700; line-height: 1.3; }
+  .mock-prod .pmeta { font-size: 12px; color: var(--muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .mock-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .b { max-width: 92%; padding: 11px 13px; font-size: 13.5px; line-height: 1.6; border-radius: 14px; }
+  .b.user { align-self: flex-start; background: var(--brand); color: #fff; border-bottom-inline-start: none; border-end-start-radius: 4px; }
+  .b.bot { align-self: flex-end; background: color-mix(in srgb, var(--ground) 70%, var(--paper)); border: 1px solid var(--line); border-end-end-radius: 4px; }
+  .verdict { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; color: var(--brand-deep); }
+  .verdict.bad { color: var(--pop); }
+  .b.bot ul { margin: 8px 6px 2px; padding-inline-start: 16px; display: flex; flex-direction: column; gap: 4px; }
+  .b.bot li { font-size: 13px; }
+  .pill { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
+  .pill.warn { background: var(--pop-wash); color: var(--pop); }
+
+  /* floating price badge */
+  .price-badge {
+    position: absolute; inset-block-start: -18px; inset-inline-start: -18px;
+    background: var(--ink); color: var(--ground); border-radius: 16px; padding: 12px 16px;
+    box-shadow: var(--shadow); transform: rotate(-4deg); z-index: 2;
+  }
+  .price-badge .sm { font-size: 11px; opacity: .7; }
+  .price-badge .lg { font-family: "Suez One", serif; font-size: 22px; color: var(--brand-deep); }
+
+  /* ===== PROBLEM STRIP ===== */
+  .strip { background: var(--ink); color: var(--ground); padding: 40px 0; margin-top: 30px; }
+  .strip .wrap { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; justify-content: center; text-align: center; }
+  .strip .big { font-family: "Suez One", serif; font-size: clamp(30px, 5vw, 46px); color: var(--brand-deep); }
+  .strip .cap { max-width: 30ch; color: color-mix(in srgb, var(--ground) 78%, transparent); font-size: 17px; }
+
+  /* ===== SECTION ===== */
+  section.pad { padding: 76px 0; }
+  .sec-head { text-align: center; max-width: 40ch; margin: 0 auto 48px; }
+  .sec-head h2 { font-size: clamp(30px, 4vw, 44px); margin-top: 12px; }
+  .sec-head p { color: var(--muted); margin-top: 14px; font-size: 18px; }
+
+  /* features */
+  .feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .card {
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 28px; box-shadow: var(--shadow-sm);
+  }
+  .card .ic {
+    width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; font-size: 25px;
+    background: var(--brand-wash); margin-bottom: 16px;
+  }
+  .card h3 { font-size: 22px; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 15.5px; }
+
+  /* steps */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; counter-reset: s; }
+  .step { position: relative; padding-top: 14px; }
+  .step .num {
+    font-family: "Suez One", serif; font-size: 15px; color: #fff; background: var(--brand);
+    width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 16px;
+  }
+  .step h3 { font-size: 21px; margin-bottom: 6px; }
+  .step p { color: var(--muted); font-size: 15.5px; }
+
+  /* sites */
+  .sites { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .site-chip {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 999px;
+    padding: 12px 22px; font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 8px;
+  }
+
+  /* pricing */
+  .price-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; max-width: 780px; margin: 0 auto; }
+  .plan { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 32px; position: relative; }
+  .plan.hot { border: 2px solid var(--brand); box-shadow: var(--shadow); }
+  .plan .tag { position: absolute; inset-block-start: -13px; inset-inline-end: 24px; background: var(--brand); color: #fff;
+    font-size: 12px; font-weight: 800; padding: 5px 14px; border-radius: 999px; }
+  .plan h3 { font-size: 24px; }
+  .plan .amt { font-family: "Suez One", serif; font-size: 46px; margin: 10px 0 2px; }
+  .plan .amt small { font-family: "Heebo"; font-size: 16px; color: var(--muted); font-weight: 500; }
+  .plan ul { list-style: none; margin: 20px 0 26px; display: flex; flex-direction: column; gap: 10px; }
+  .plan li { display: flex; gap: 9px; font-size: 15.5px; color: var(--ink); }
+  .plan li .ck { color: var(--brand); font-weight: 900; }
+  .plan .buy { display: block; text-align: center; padding: 13px; border-radius: 12px; font-weight: 800; }
+  .plan.hot .buy { background: var(--brand); color: #fff; }
+  .plan .buy.alt { background: var(--paper); border: 1.5px solid var(--line); color: var(--ink); }
+
+  /* faq */
+  .faq { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  details { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 6px 20px; }
+  summary { cursor: pointer; list-style: none; padding: 14px 0; font-weight: 700; font-size: 17px; display: flex; justify-content: space-between; align-items: center; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--brand); font-size: 24px; font-weight: 700; }
+  details[open] summary::after { content: "–"; }
+  details p { color: var(--muted); padding: 0 0 16px; font-size: 15.5px; }
+
+  /* final cta */
+  .final { text-align: center; background: linear-gradient(160deg, var(--brand-wash), var(--paper)); border: 1px solid var(--line);
+    border-radius: 28px; padding: 60px 32px; }
+  .final h2 { font-size: clamp(30px, 4.5vw, 48px); }
+  .final p { color: var(--muted); font-size: 19px; margin: 16px auto 30px; max-width: 34ch; }
+
+  footer { text-align: center; padding: 40px 0 30px; color: var(--muted); font-size: 14px; }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 46px; }
+    .feat-grid, .steps, .price-grid { grid-template-columns: 1fr; }
+    .mock { transform: none; margin-top: 10px; }
+    .lead { max-width: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+
+<nav>
+  <div class="wrap nav-in">
+    <div class="logo"><span class="mark">🛒</span> קונים חכם</div>
+    <a href="#pricing" class="nav-cta">התחילו לחסוך</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">עוזר הקניות החכם שלכם</span>
+      <h1>לפני שאתם מזמינים — <span class="hl">תשאלו אותו</span> אם זה שווה.</h1>
+      <p class="lead">קונים חכם קורא את <b>כל הביקורות</b> על המוצר ב-AliExpress, Temu ו-Amazon, מזהה ביקורות מזויפות, ואומר לכם בעברית פשוטה: לקנות או לא.</p>
+      <div class="cta-row">
+        <a href="#pricing" class="btn-primary">נסו עכשיו</a>
+        <a href="#how" class="btn-ghost">איך זה עובד?</a>
+      </div>
+      <div class="trust">
+        <span class="stars">★★★★★</span>
+        <span>מפסיקים לקנות זבל על סמך ביקורות מזויפות</span>
+      </div>
+    </div>
+
+    <div class="mock reveal">
+      <div class="price-badge">
+        <div class="sm">חוסך בממוצע</div>
+        <div class="lg">₪90 להזמנה</div>
+      </div>
+      <div class="mock-top">
+        <span class="mark">🛒</span>
+        <div><b>קונים חכם</b><br><small>מנתח את המוצר שאתם צופים בו…</small></div>
+      </div>
+      <div class="mock-prod">
+        <span class="thumb">🎧</span>
+        <div>
+          <div class="pname">אוזניות אלחוטיות TWS Pro</div>
+          <div class="pmeta">₪34.90 · ⭐ 4.6 · 2,180 ביקורות</div>
+        </div>
+      </div>
+      <div class="mock-body">
+        <div class="b user">האם שווה לקנות את האוזניות האלה?</div>
+        <div class="b bot">
+          <span class="verdict bad">⚠️ בזהירות — לא הייתי ממהר</span>
+          <ul>
+            <li>👍 סוללה שמחזיקה, חיבור מהיר</li>
+            <li>👎 ‏37% מהביקורות: אוזן אחת מפסיקה לעבוד תוך חודש</li>
+            <li>🤖 <span class="pill warn">חשד</span> ‏~400 ביקורות חיוביות בנוסח כמעט זהה</li>
+          </ul>
+          <div style="margin-top:8px">מצאתי דגם דומה ואמין יותר ב-₪52 עם ביקורות אמיתיות. להראות?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="big">‏42%</div>
+    <div class="cap">מהביקורות באתרי הקניות הגדולים חשודות כמזויפות או מוטות. קשה לדעת למה להאמין — <b>וזה בדיוק מה שקונים חכם פותר.</b></div>
+  </div>
+</div>
+
+<section class="pad" id="features">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">מה הוא עושה בשבילכם</span>
+      <h2>יועץ קניות שקרא הכל לפניכם</h2>
+      <p>במקום לגלול מאות ביקורות בשפה זרה — שאלה אחת בצ'אט ומקבלים תשובה.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="card reveal"><div class="ic">🔍</div><h3>ניתוח ביקורות אמיתי</h3><p>קורא מאות ביקורות, מסכם את מה שחוזר לטובה ולרעה, ומצביע על התלונות המהותיות — איכות, עמידות, מידות וזמן משלוח.</p></div>
+      <div class="card reveal"><div class="ic">🤖</div><h3>זיהוי ביקורות מזויפות</h3><p>מזהה דפוסים חשודים: ביקורות גנריות, נוסח חוזר וגל חיוביות לא טבעי — ומזהיר אתכם לפני שנפלתם בפח.</p></div>
+      <div class="card reveal"><div class="ic">💰</div><h3>השוואת מחירים (זאפ)</h3><p>בדף מוצר בזאפ — אומר לכם איפה הכי כדאי לקנות: משקלל מחיר מול אמינות החנות ומשלוח, ומזהיר מהצעה זולה בחשד.</p></div>
+      <div class="card reveal"><div class="ic">✅</div><h3>המלצה ברורה</h3><p>בלי לשבת על הגדר: שווה / בזהירות / לא מומלץ — עם נימוק קצר שאפשר להבין בשנייה.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="how" style="background:var(--paper); border-block:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">שלוש דקות ואתם בפנים</span>
+      <h2>איך זה עובד</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h3>גולשים כרגיל</h3><p>נכנסים לדף מוצר ב-AliExpress, Temu, Amazon או eBay — בדיוק כמו תמיד.</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>שואלים את הבוט</h3><p>פותחים את הצ'אט בלחיצה, ושואלים "שווה לקנות?" — הוא קורא את הביקורות מהעמוד.</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>מקבלים החלטה</h3><p>תוך שניות מקבלים המלצה ברורה עם יתרונות, חסרונות ואזהרות — וקונים בראש שקט.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">עובד איפה שאתם קונים</span>
+      <h2>האתרים הנתמכים</h2>
+    </div>
+    <div class="sites reveal">
+      <div class="site-chip">🛍️ AliExpress</div>
+      <div class="site-chip">🟠 Temu</div>
+      <div class="site-chip">📦 Amazon</div>
+      <div class="site-chip">🔨 eBay</div>
+      <div class="site-chip">👗 Shein</div>
+      <div class="site-chip">💰 זאפ · השוואת מחירים</div>
+      <div class="site-chip">➕ ועוד בקרוב</div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="pricing" style="background:var(--paper); border-block:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">מנוי פשוט</span>
+      <h2>בוחרים תוכנית ומתחילים לחסוך</h2>
+      <p>הזמנה כושלת אחת כבר עולה יותר מהמנוי החודשי.</p>
+    </div>
+    <div class="price-grid">
+      <div class="plan reveal">
+        <h3>חודשי</h3>
+        <div class="amt">₪6.90<small> / לחודש</small></div>
+        <ul>
+          <li><span class="ck">✓</span> ניתוח ביקורות והמלצת קנייה</li>
+          <li><span class="ck">✓</span> השוואת מחירים בזאפ</li>
+          <li><span class="ck">✓</span> מציאת מוצר זול יותר באותו אתר</li>
+          <li><span class="ck">✓</span> התחברות מאובטחת עם גוגל</li>
+        </ul>
+        <a href="#" class="buy alt">התחילו חודשי</a>
+      </div>
+      <div class="plan hot reveal">
+        <span class="tag">כ-3 חודשים חינם</span>
+        <h3>שנתי</h3>
+        <div class="amt">₪59<small> / לשנה</small></div>
+        <ul>
+          <li><span class="ck">✓</span> כל מה שבמסלול החודשי</li>
+          <li><span class="ck">✓</span> רק ₪4.9 לחודש בפועל</li>
+          <li><span class="ck">✓</span> עדיפות במהירות ניתוח</li>
+          <li><span class="ck">✓</span> גישה מוקדמת לאתרים חדשים</li>
+        </ul>
+        <a href="#" class="buy">התחילו שנתי</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">שאלות נפוצות</span>
+      <h2>מה שרציתם לשאול</h2>
+    </div>
+    <div class="faq">
+      <details class="reveal"><summary>איך הבוט קורא את הביקורות בלי להיחסם?</summary><p>הוא פועל כתוסף בתוך הדפדפן שלכם, ולכן קורא את אותו עמוד שאתם כבר צופים בו — בלי לגרד מבחוץ ובלי להיחסם.</p></details>
+      <details class="reveal"><summary>האם צריך ידע טכני?</summary><p>לא. מתקינים פעם אחת, מתחברים עם גוגל, ומשם זה צ'אט פשוט בעברית.</p></details>
+      <details class="reveal"><summary>הביקורות בסינית או אנגלית — זה בעיה?</summary><p>ממש לא. הבוט מבין אותן ומסכם לכם בעברית ברורה.</p></details>
+      <details class="reveal"><summary>מה קורה אם אין מספיק ביקורות?</summary><p>הבוט יאמר לכם את זה בכנות ולא ימציא — כי המטרה היא שתסמכו עליו.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <div class="final reveal">
+      <h2>הזמנה חכמה מתחילה בשאלה אחת</h2>
+      <p>הצטרפו לקונים שכבר מפסיקים להתחרט על הזמנות מאכזבות.</p>
+      <a href="#pricing" class="btn-primary">התחילו עם קונים חכם</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">קונים חכם — עוזר הקניות החכם · הבינה שקוראת את הביקורות בשבילכם</div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.14 });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+</script>
