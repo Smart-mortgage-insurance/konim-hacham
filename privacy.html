@@ -5,99 +5,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>מדיניות פרטיות — קונים חכם</title>
 <meta name="robots" content="index,follow" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Suez+One&family=Heebo:wght@400;500;700;800&display=swap" />
 <style>
-  :root {
-    --ground:#f2f5f1; --paper:#fff; --ink:#16211c; --muted:#5c6b62; --line:#e2e8e2;
-    --brand:#0f9d6e; --brand-deep:#0a6b4c; --brand-wash:#e6f4ee; --r:16px;
+  body {
+    background: #ffffff;
+    color: #000000;
+    font-family: Arial, "Segoe UI", Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px 22px 60px;
+    direction: rtl;
   }
-  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-    --ground:#0d1411; --paper:#15201b; --ink:#e9f0ea; --muted:#9fb0a6; --line:#263630;
-    --brand:#2ed89b; --brand-deep:#46e6ac; --brand-wash:#12271f;
-  }}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--ground);color:var(--ink);font-family:"Heebo",system-ui,sans-serif;
-    font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:760px;margin:0 auto;padding:0 22px}
-  header{background:var(--paper);border-bottom:1px solid var(--line);padding:22px 0}
-  .logo{display:flex;align-items:center;gap:10px;font-family:"Suez One",serif;font-size:20px}
-  .logo .mark{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
-    background:linear-gradient(140deg,var(--brand),var(--brand-deep));color:#fff;font-size:19px}
-  main{padding:44px 0 64px}
-  h1{font-family:"Suez One",serif;font-weight:400;font-size:clamp(30px,5vw,42px);line-height:1.15}
-  .updated{color:var(--muted);font-size:14px;margin-top:10px}
-  .lead{font-size:19px;color:var(--muted);margin:20px 0 8px}
-  h2{font-family:"Suez One",serif;font-weight:400;font-size:24px;margin:34px 0 10px;color:var(--brand-deep)}
-  p{margin:10px 0}
-  ul{margin:10px 22px 10px 0;display:flex;flex-direction:column;gap:8px}
-  li{margin:0}
-  b{font-weight:700}
-  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px 24px;margin:18px 0}
-  a{color:var(--brand-deep);font-weight:600}
-  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:14px;text-align:center}
-  footer a{color:var(--muted)}
+  h1 { font-size: 18px; font-weight: bold; margin: 0 0 4px; }
+  h2 { font-size: 14px; font-weight: bold; margin: 22px 0 6px; }
+  p { margin: 8px 0; }
+  ul { margin: 8px 0; padding-inline-start: 20px; }
+  li { margin: 3px 0; }
+  a { color: #000000; }
+  .updated { color: #444; font-size: 12px; margin-bottom: 18px; }
+  hr { border: none; border-top: 1px solid #ccc; margin: 18px 0; }
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap logo"><span class="mark">🛒</span> קונים חכם</div>
-</header>
-
-<main class="wrap">
-  <h1>מדיניות פרטיות</h1>
+  <h1>מדיניות פרטיות — קונים חכם</h1>
   <div class="updated">עודכן לאחרונה: ספטמבר 2026</div>
 
-  <p class="lead">קונים חכם הוא תוסף דפדפן שעוזר לכם להחליט מה כדאי לקנות. אנחנו מאמינים בפרטיות — התוסף עובד על המידע שכבר מוצג לכם בעמוד, ולא אוסף מידע אישי מיותר.</p>
+  <p>קונים חכם ("התוסף") הוא תוסף דפדפן שעוזר למשתמשים להעריך מוצרים באתרי קניות. מסמך זה מפרט איזה מידע התוסף ניגש אליו וכיצד הוא נעשה בו שימוש.</p>
 
-  <h2>איזה מידע התוסף ניגש אליו</h2>
-  <div class="card">
-    <ul>
-      <li><b>תוכן דף המוצר שאתם צופים בו</b> — כותרת, מחיר, דירוג וטקסט הביקורות — ורק כאשר אתם מבקשים ניתוח או חיפוש. התוסף אינו קורא דפים ברקע ואינו עוקב אחר הגלישה שלכם.</li>
-      <li><b>הודעות הצ'אט שאתם כותבים</b> בפאנל התוסף.</li>
-      <li><b>תמונת מוצר</b> — רק כשאתם בוחרים "מצא מוצר כזה בזול" בלחיצה ימנית על תמונה.</li>
-    </ul>
-  </div>
-
-  <h2>מה נעשה עם המידע</h2>
-  <p>כדי לנתח ביקורות ולמצוא הצעות טובות יותר, המידע מהעמוד נשלח לניתוח על ידי מודל בינה מלאכותית של <b>Anthropic (Claude)</b>. המידע משמש אך ורק להפקת התשובה שאתם מקבלים באותו רגע. הוא אינו נמכר ואינו משמש לפרסום.</p>
-  <p>חיפוש מוצרים מתבצע <b>בתוך האתר שאתם כבר גולשים בו, בסשן שלכם</b> — בלי גירוד חיצוני ובלי מעקב חוצה-אתרים.</p>
-
-  <h2>התחברות וחשבון (במצב מנוי)</h2>
-  <p>אם תבחרו להתחבר לחשבון (למעקב קרדיטים ומנוי), נשתמש בהתחברות Google כדי לזהות אתכם באמצעות <b>כתובת הדוא"ל</b> שלכם בלבד. איננו ניגשים לתוכן הדוא"ל, לאנשי הקשר או לקבצים שלכם.</p>
-
-  <h2>מה נשמר במכשיר שלכם</h2>
+  <h2>1. מידע שהתוסף ניגש אליו</h2>
   <ul>
-    <li>ההגדרות שלכם (ומפתח ה-API, אם אתם משתמשים במפתח אישי) נשמרים <b>מקומית בדפדפן שלכם</b> בלבד.</li>
-    <li>יתרת הקרדיטים והמנוי (במצב מנוי) נשמרים בשרת שלנו, מקושרים לחשבון שלכם.</li>
+    <li>תוכן דף המוצר שהמשתמש צופה בו (כותרת, מחיר, דירוג וטקסט ביקורות) — ורק כאשר המשתמש מבקש ניתוח או חיפוש. התוסף אינו קורא דפים ברקע ואינו עוקב אחר הגלישה.</li>
+    <li>הודעות הצ'אט שהמשתמש כותב בפאנל התוסף.</li>
+    <li>תמונת מוצר — רק כאשר המשתמש בוחר "מצא מוצר כזה בזול" בלחיצה ימנית על תמונה.</li>
   </ul>
 
-  <h2>קישורי שותפים</h2>
-  <p>כשהתוסף ממליץ על מוצר, ייתכן שהקישור כולל פרמטר שותף — כך שאם תקנו, אנחנו עשויים לקבל עמלה מהחנות, <b>בלי תוספת עלות לכם</b>. הקישור נשאר לאותו מוצר בדיוק.</p>
+  <h2>2. שימוש במידע</h2>
+  <p>לצורך ניתוח הביקורות והשוואת המחירים, המידע מדף המוצר נשלח לניתוח על ידי מודל בינה מלאכותית של Anthropic (Claude). המידע משמש אך ורק להפקת התשובה המוצגת למשתמש באותו רגע. המידע אינו נמכר ואינו משמש לפרסום.</p>
+  <p>חיפוש מוצרים מתבצע בתוך האתר שהמשתמש כבר גולש בו, במסגרת ההתחברות שלו לאתר — ללא גירוד חיצוני וללא מעקב חוצה-אתרים.</p>
 
-  <h2>עם מי המידע משותף</h2>
-  <ul>
-    <li><b>Anthropic</b> — לצורך ניתוח הביקורות והמוצר (<a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">מדיניות הפרטיות שלהם</a>).</li>
-    <li><b>Google</b> — רק אם בחרתם להתחבר, לצורך זיהוי בדוא"ל.</li>
-  </ul>
-  <p>איננו משתפים את המידע שלכם עם אף גורם אחר, ואיננו מוכרים מידע אישי.</p>
+  <h2>3. התחברות וחשבון (במצב מנוי)</h2>
+  <p>אם המשתמש בוחר להתחבר לחשבון (למעקב קרדיטים ומנוי), נעשה שימוש בהתחברות Google לצורך זיהוי באמצעות כתובת הדוא"ל בלבד. התוסף אינו ניגש לתוכן הדוא"ל, לאנשי הקשר או לקבצים.</p>
 
-  <h2>מה התוסף <u>לא</u> עושה</h2>
+  <h2>4. מידע הנשמר במכשיר המשתמש</h2>
   <ul>
-    <li>לא אוסף היסטוריית גלישה ולא עוקב אחריכם בין אתרים.</li>
-    <li>לא ניגש לסיסמאות, לפרטי אשראי או לנתונים רגישים בטפסים.</li>
-    <li>לא מבצע פעולות בשמכם — רק קורא, מנתח ומציג לכם.</li>
+    <li>הגדרות המשתמש (ומפתח API, אם המשתמש משתמש במפתח אישי) נשמרים מקומית בדפדפן המשתמש בלבד.</li>
+    <li>יתרת קרדיטים ומנוי (במצב מנוי) נשמרים בשרת השירות, מקושרים לחשבון המשתמש.</li>
   </ul>
 
-  <h2>יצירת קשר</h2>
-  <p>לשאלות בנושא פרטיות ניתן לפנות אלינו בדוא"ל: <a id="contact" href="mailto:konim.hacham@gmail.com">konim.hacham@gmail.com</a>.</p>
+  <h2>5. קישורי שותפים</h2>
+  <p>כאשר התוסף ממליץ על מוצר, ייתכן שהקישור כולל פרמטר שותף, כך שרכישה עשויה להניב עמלה מהחנות, ללא תוספת עלות למשתמש. הקישור מפנה לאותו מוצר.</p>
 
-  <p style="margin-top:26px"><a href="./">← חזרה לדף הבית</a></p>
-</main>
+  <h2>6. שיתוף מידע עם צדדים שלישיים</h2>
+  <ul>
+    <li>Anthropic — לצורך ניתוח הביקורות והמוצר (<a href="https://www.anthropic.com/legal/privacy">מדיניות הפרטיות</a>).</li>
+    <li>Google — רק אם המשתמש בחר להתחבר, לצורך זיהוי בדוא"ל.</li>
+  </ul>
+  <p>המידע אינו משותף עם גורמים אחרים ואינו נמכר.</p>
 
-<footer>
-  <div class="wrap">קונים חכם — עוזר הקניות החכם · <a href="./">דף הבית</a></div>
-</footer>
+  <h2>7. מה התוסף אינו עושה</h2>
+  <ul>
+    <li>אינו אוסף היסטוריית גלישה ואינו עוקב אחר המשתמש בין אתרים.</li>
+    <li>אינו ניגש לסיסמאות, לפרטי אשראי או לנתונים רגישים בטפסים.</li>
+    <li>אינו מבצע פעולות בשם המשתמש — רק קורא, מנתח ומציג.</li>
+  </ul>
+
+  <h2>8. יצירת קשר</h2>
+  <p>לשאלות בנושא פרטיות ניתן לפנות בדוא"ל: <a href="mailto:konim.hacham@gmail.com">konim.hacham@gmail.com</a>.</p>
+
+  <hr />
+  <p><a href="./">חזרה לדף הבית</a></p>
 </body>
 </html>

@@ -254,11 +254,6 @@
 
   footer { text-align: center; padding: 40px 0 30px; color: var(--muted); font-size: 14px; }
   footer .wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; }
-  /* רקע כהה — הלוגו הרשמי של נטפרי לבן, אז חייב רקע כהה כדי שייראה */
-  .netfree { display: inline-flex; align-items: center; gap: 11px; background: #16211c;
-    border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 9px 18px; box-shadow: var(--shadow-sm); }
-  .netfree img { height: 24px; width: auto; display: block; }
-  .netfree span { font-weight: 700; font-size: 14px; color: #ffffff; }
 
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: none; }
@@ -357,7 +352,7 @@
       <div class="card reveal"><div class="ic">📸</div><h3>חיפוש לפי תמונה</h3><p>ראיתם מוצר בכל אתר או ברשת? לחיצה ימנית על התמונה → "מצא כזה בזול". הבוט מזהה מה זה ומחפש אותו במחיר נמוך יותר באתרי הקניות הנתמכים.</p></div>
       <div class="card reveal"><div class="ic">🤖</div><h3>זיהוי ביקורות מזויפות</h3><p>מזהה דפוסים חשודים: ביקורות גנריות, נוסח חוזר וגל חיוביות לא טבעי — ומזהיר אתכם לפני שנפלתם בפח.</p></div>
       <div class="card reveal"><div class="ic">✅</div><h3>המלצה כנה</h3><p>בלי לשבת על הגדר ובלי להמציא: שווה / בזהירות / לא מומלץ — עם נימוק קצר, ותמיד ביחס למחיר. אם אין מספיק מידע, יגיד לכם.</p></div>
-      <div class="card reveal"><div class="ic">🛡️</div><h3>עובד מאחורי הסינון</h3><p>בנוי כך שכל הקישורים נשארים על הדומיין המקורי של האתר — בלי דומייני הפניה חסומים — ולכן עובד חלק גם עם מסנני נטפרי.</p></div>
+      <div class="card reveal"><div class="ic">🔒</div><h3>פרטי ובטוח</h3><p>קורא רק את דף המוצר שאתם צופים בו, ורק כשאתם מבקשים ניתוח. לא אוסף היסטוריית גלישה ולא מוכר מידע.</p></div>
     </div>
   </div>
 </section>
@@ -485,7 +480,6 @@
     <div class="faq">
       <details class="reveal"><summary>איך הבוט קורא את הביקורות בלי להיחסם?</summary><p>הוא פועל כתוסף בתוך הדפדפן שלכם, ולכן קורא וסורק את אותו עמוד שאתם כבר צופים בו — בלי לגרד מבחוץ ובלי להיחסם.</p></details>
       <details class="reveal"><summary>מה זה "קרדיט"?</summary><p>יחידת שימוש אחת — ניתוח מוצר, חיפוש "בזול יותר" או זיהוי מתמונה. מתחילים עם 10 חינם, וממשיכים עם חבילה או מנוי לפי מה שנוח לכם.</p></details>
-      <details class="reveal"><summary>זה עובד עם מסנן נטפרי?</summary><p>כן. בנוי במיוחד כך שכל הקישורים נשארים על הדומיין המקורי של האתר (בלי דומייני הפניה חסומים), כך שהכל עובד חלק גם מאחורי הסינון.</p></details>
       <details class="reveal"><summary>הביקורות בסינית או אנגלית — זו בעיה?</summary><p>ממש לא. הבוט מבין אותן ומסכם לכם בעברית ברורה.</p></details>
       <details class="reveal"><summary>מה קורה אם אין מספיק ביקורות?</summary><p>הבוט יאמר לכם את זה בכנות ולא ימציא — כי המטרה היא שתסמכו עליו.</p></details>
     </div>
@@ -504,10 +498,6 @@
 
 <footer>
   <div class="wrap">
-    <a class="netfree" href="https://netfree.link" target="_blank" rel="noopener">
-      <img src="netfree-logo.svg" alt="נטפרי" />
-      <span>גם אני שמור עם נטפרי</span>
-    </a>
     <div class="foot-line">קונים חכם — עוזר הקניות החכם · הבינה שקוראת את הביקורות בשבילכם</div>
     <div class="foot-line"><a href="privacy.html" style="color:var(--brand-deep);font-weight:600">מדיניות פרטיות</a></div>
   </div>
