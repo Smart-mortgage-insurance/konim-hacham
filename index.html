@@ -254,10 +254,11 @@
 
   footer { text-align: center; padding: 40px 0 30px; color: var(--muted); font-size: 14px; }
   footer .wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; }
-  .netfree { display: inline-flex; align-items: center; gap: 10px; background: #ffffff;
-    border: 1px solid #e2e8e2; border-radius: 999px; padding: 8px 16px; box-shadow: var(--shadow-sm); }
-  .netfree img { height: 22px; width: auto; display: block; }
-  .netfree span { font-weight: 700; font-size: 14px; color: #16211c; }
+  /* רקע כהה — הלוגו הרשמי של נטפרי לבן, אז חייב רקע כהה כדי שייראה */
+  .netfree { display: inline-flex; align-items: center; gap: 11px; background: #16211c;
+    border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 9px 18px; box-shadow: var(--shadow-sm); }
+  .netfree img { height: 24px; width: auto; display: block; }
+  .netfree span { font-weight: 700; font-size: 14px; color: #ffffff; }
 
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: none; }
