@@ -253,6 +253,11 @@
   .final p { color: var(--muted); font-size: 19px; margin: 16px auto 30px; max-width: 34ch; }
 
   footer { text-align: center; padding: 40px 0 30px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .netfree { display: inline-flex; align-items: center; gap: 10px; background: #ffffff;
+    border: 1px solid #e2e8e2; border-radius: 999px; padding: 8px 16px; box-shadow: var(--shadow-sm); }
+  .netfree img { height: 22px; width: auto; display: block; }
+  .netfree span { font-weight: 700; font-size: 14px; color: #16211c; }
 
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: none; }
@@ -348,10 +353,10 @@
         <p>האתרים מראים לכם קודם את הביקורות היפות. קונים חכם פותח דווקא את ה-1 וה-2 כוכבים — <b>התלונות האמיתיות</b> — וחושף מה שחוזר: מוצר שלא תואם לתיאור, נשבר תוך חודש, מידה לא נכונה. בדיוק מה שהיה גורם לכם להתחרט.</p>
       </div>
       <div class="card reveal"><div class="ic">💰</div><h3>מוצא בזול יותר</h3><p>אותו מוצר (או שווה-ערך טוב יותר) במחיר נמוך יותר — גם באותו אתר וגם באתרים אחרים. מדרג לפי מחיר, דירוג וכמות נמכרו, ונותן קישור ישיר.</p></div>
-      <div class="card reveal"><div class="ic">📸</div><h3>חיפוש לפי תמונה</h3><p>ראיתם מוצר בכל אתר או ברשת? לחיצה ימנית על התמונה → "מצא כזה בזול". הבוט מזהה מה זה ומחפש אותו זול יותר ב-Temu וב-AliExpress.</p></div>
+      <div class="card reveal"><div class="ic">📸</div><h3>חיפוש לפי תמונה</h3><p>ראיתם מוצר בכל אתר או ברשת? לחיצה ימנית על התמונה → "מצא כזה בזול". הבוט מזהה מה זה ומחפש אותו במחיר נמוך יותר באתרי הקניות הנתמכים.</p></div>
       <div class="card reveal"><div class="ic">🤖</div><h3>זיהוי ביקורות מזויפות</h3><p>מזהה דפוסים חשודים: ביקורות גנריות, נוסח חוזר וגל חיוביות לא טבעי — ומזהיר אתכם לפני שנפלתם בפח.</p></div>
       <div class="card reveal"><div class="ic">✅</div><h3>המלצה כנה</h3><p>בלי לשבת על הגדר ובלי להמציא: שווה / בזהירות / לא מומלץ — עם נימוק קצר, ותמיד ביחס למחיר. אם אין מספיק מידע, יגיד לכם.</p></div>
-      <div class="card reveal"><div class="ic">🕯️</div><h3>מתאים לכם</h3><p>עובד מצוין עם מסנני נטפרי, ומכבד שבת ומועדים — קישורי השותפים לא מסומנים בזמן שבת לפי המיקום שלכם.</p></div>
+      <div class="card reveal"><div class="ic">🛡️</div><h3>עובד מאחורי הסינון</h3><p>בנוי כך שכל הקישורים נשארים על הדומיין המקורי של האתר — בלי דומייני הפניה חסומים — ולכן עובד חלק גם עם מסנני נטפרי.</p></div>
     </div>
   </div>
 </section>
@@ -481,7 +486,6 @@
       <details class="reveal"><summary>איך הבוט קורא את הביקורות בלי להיחסם?</summary><p>הוא פועל כתוסף בתוך הדפדפן שלכם, ולכן קורא וסורק את אותו עמוד שאתם כבר צופים בו — בלי לגרד מבחוץ ובלי להיחסם.</p></details>
       <details class="reveal"><summary>מה זה "קרדיט"?</summary><p>יחידת שימוש אחת — ניתוח מוצר, חיפוש "בזול יותר" או זיהוי מתמונה. מתחילים עם 10 חינם, וממשיכים עם חבילה או מנוי לפי מה שנוח לכם.</p></details>
       <details class="reveal"><summary>זה עובד עם מסנן נטפרי?</summary><p>כן. בנוי במיוחד כך שכל הקישורים נשארים על הדומיין המקורי של האתר (בלי דומייני הפניה חסומים), כך שהכל עובד חלק גם מאחורי הסינון.</p></details>
-      <details class="reveal"><summary>ומה עם שבת?</summary><p>הבוט מכבד שבת ומועדים לפי המיקום שלכם — בזמן שבת קישורי השותפים לא מסומנים, כדי שלא תהיה פעולה עסקית בשבת.</p></details>
       <details class="reveal"><summary>הביקורות בסינית או אנגלית — זו בעיה?</summary><p>ממש לא. הבוט מבין אותן ומסכם לכם בעברית ברורה.</p></details>
       <details class="reveal"><summary>מה קורה אם אין מספיק ביקורות?</summary><p>הבוט יאמר לכם את זה בכנות ולא ימציא — כי המטרה היא שתסמכו עליו.</p></details>
     </div>
@@ -499,7 +503,13 @@
 </section>
 
 <footer>
-  <div class="wrap">קונים חכם — עוזר הקניות החכם · הבינה שקוראת את הביקורות בשבילכם</div>
+  <div class="wrap">
+    <a class="netfree" href="https://netfree.link" target="_blank" rel="noopener">
+      <img src="netfree-logo.svg" alt="נטפרי" />
+      <span>גם אני שמור עם נטפרי</span>
+    </a>
+    <div class="foot-line">קונים חכם — עוזר הקניות החכם · הבינה שקוראת את הביקורות בשבילכם</div>
+  </div>
 </footer>
 
 <script>
