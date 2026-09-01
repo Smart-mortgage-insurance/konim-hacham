@@ -1,5 +1,5 @@
 <title>קונים חכם</title>
-<meta name="description" content="עוזר קניות חכם שקורא את הביקורות בשבילך ואומר לך מה כדאי לקנות ב-AliExpress, Temu ו-Amazon." />
+<meta name="description" content="עוזר קניות חכם שקורא בשבילכם את כל הביקורות (כולל השליליות), מוצא את אותו מוצר בזול יותר, ומזהה מוצר מתמונה — ב-AliExpress, Temu, Amazon ו-eBay." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Suez+One&family=Heebo:wght@400;500;700;800;900&family=Rubik:wght@500;600&display=swap" />
@@ -105,7 +105,7 @@
     content: ""; position: absolute; inset-inline: -2px; bottom: 6px; height: 12px;
     background: var(--brand-wash); z-index: -1; border-radius: 4px;
   }
-  .lead { font-size: 20px; color: var(--muted); margin-top: 22px; max-width: 30ch; }
+  .lead { font-size: 20px; color: var(--muted); margin-top: 22px; max-width: 32ch; }
   .cta-row { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
   .btn-primary {
     background: var(--brand); color: #fff; font-weight: 800; font-size: 17px;
@@ -154,6 +154,7 @@
   .b.bot li { font-size: 13px; }
   .pill { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
   .pill.warn { background: var(--pop-wash); color: var(--pop); }
+  .pill.good { background: var(--brand-wash); color: var(--brand-deep); }
 
   /* floating price badge */
   .price-badge {
@@ -172,22 +173,26 @@
 
   /* ===== SECTION ===== */
   section.pad { padding: 76px 0; }
-  .sec-head { text-align: center; max-width: 40ch; margin: 0 auto 48px; }
+  .sec-head { text-align: center; max-width: 42ch; margin: 0 auto 48px; }
   .sec-head h2 { font-size: clamp(30px, 4vw, 44px); margin-top: 12px; }
   .sec-head p { color: var(--muted); margin-top: 14px; font-size: 18px; }
 
   /* features */
-  .feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .card {
     background: var(--paper); border: 1px solid var(--line); border-radius: var(--r);
     padding: 28px; box-shadow: var(--shadow-sm);
   }
+  .card.span2 { grid-column: span 2; }
   .card .ic {
     width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; font-size: 25px;
     background: var(--brand-wash); margin-bottom: 16px;
   }
-  .card h3 { font-size: 22px; margin-bottom: 8px; }
+  .card .ic.pop { background: var(--pop-wash); }
+  .card h3 { font-size: 21px; margin-bottom: 8px; }
   .card p { color: var(--muted); font-size: 15.5px; }
+  .card .tagline { display: inline-block; margin-bottom: 12px; font-family: "Rubik", sans-serif; font-weight: 600;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--pop); }
 
   /* steps */
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; counter-reset: s; }
@@ -207,27 +212,37 @@
   }
 
   /* pricing */
-  .price-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; max-width: 780px; margin: 0 auto; }
-  .plan { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 32px; position: relative; }
+  .pay-how { max-width: 620px; margin: 0 auto 40px; text-align: center; background: var(--paper);
+    border: 1px solid var(--line); border-radius: var(--r); padding: 22px 26px; box-shadow: var(--shadow-sm); }
+  .pay-how b { color: var(--brand-deep); }
+  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
+  .plan { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 30px; position: relative; display: flex; flex-direction: column; }
   .plan.hot { border: 2px solid var(--brand); box-shadow: var(--shadow); }
   .plan .tag { position: absolute; inset-block-start: -13px; inset-inline-end: 24px; background: var(--brand); color: #fff;
     font-size: 12px; font-weight: 800; padding: 5px 14px; border-radius: 999px; }
-  .plan h3 { font-size: 24px; }
-  .plan .amt { font-family: "Suez One", serif; font-size: 46px; margin: 10px 0 2px; }
-  .plan .amt small { font-family: "Heebo"; font-size: 16px; color: var(--muted); font-weight: 500; }
-  .plan ul { list-style: none; margin: 20px 0 26px; display: flex; flex-direction: column; gap: 10px; }
-  .plan li { display: flex; gap: 9px; font-size: 15.5px; color: var(--ink); }
+  .plan h3 { font-size: 23px; }
+  .plan .sub { color: var(--muted); font-size: 14px; margin-top: 4px; min-height: 20px; }
+  .plan .amt { font-family: "Suez One", serif; font-size: 42px; margin: 14px 0 2px; }
+  .plan .amt small { font-family: "Heebo"; font-size: 15px; color: var(--muted); font-weight: 500; }
+  .plan ul { list-style: none; margin: 18px 0 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .plan li { display: flex; gap: 9px; font-size: 15px; color: var(--ink); }
   .plan li .ck { color: var(--brand); font-weight: 900; }
-  .plan .buy { display: block; text-align: center; padding: 13px; border-radius: 12px; font-weight: 800; }
+  .packs { display: flex; flex-direction: column; gap: 8px; margin: 16px 0 22px; }
+  .pack-row { display: flex; justify-content: space-between; align-items: baseline;
+    border: 1px solid var(--line); border-radius: 12px; padding: 11px 15px; background: color-mix(in srgb, var(--ground) 45%, var(--paper)); }
+  .pack-row b { font-size: 16px; }
+  .pack-row .pc { color: var(--muted); font-size: 12.5px; }
+  .pack-row .pp { font-family: "Suez One", serif; font-size: 20px; color: var(--brand-deep); }
+  .plan .buy { display: block; text-align: center; padding: 13px; border-radius: 12px; font-weight: 800; margin-top: auto; }
   .plan.hot .buy { background: var(--brand); color: #fff; }
   .plan .buy.alt { background: var(--paper); border: 1.5px solid var(--line); color: var(--ink); }
 
   /* faq */
   .faq { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
   details { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 6px 20px; }
-  summary { cursor: pointer; list-style: none; padding: 14px 0; font-weight: 700; font-size: 17px; display: flex; justify-content: space-between; align-items: center; }
+  summary { cursor: pointer; list-style: none; padding: 14px 0; font-weight: 700; font-size: 17px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
   summary::-webkit-details-marker { display: none; }
-  summary::after { content: "+"; color: var(--brand); font-size: 24px; font-weight: 700; }
+  summary::after { content: "+"; color: var(--brand); font-size: 24px; font-weight: 700; flex: 0 0 auto; }
   details[open] summary::after { content: "–"; }
   details p { color: var(--muted); padding: 0 0 16px; font-size: 15.5px; }
 
@@ -244,7 +259,9 @@
 
   @media (max-width: 860px) {
     .hero-grid { grid-template-columns: 1fr; gap: 46px; }
-    .feat-grid, .steps, .price-grid { grid-template-columns: 1fr; }
+    .feat-grid { grid-template-columns: 1fr; }
+    .card.span2 { grid-column: span 1; }
+    .steps, .price-grid { grid-template-columns: 1fr; }
     .mock { transform: none; margin-top: 10px; }
     .lead { max-width: none; }
   }
@@ -266,7 +283,7 @@
     <div>
       <span class="eyebrow">עוזר הקניות החכם שלכם</span>
       <h1>לפני שאתם מזמינים — <span class="hl">תשאלו אותו</span> אם זה שווה.</h1>
-      <p class="lead">קונים חכם קורא את <b>כל הביקורות</b> על המוצר ב-AliExpress, Temu ו-Amazon, מזהה ביקורות מזויפות, ואומר לכם בעברית פשוטה: לקנות או לא.</p>
+      <p class="lead">קונים חכם קורא את <b>כל הביקורות — כולל השליליות</b>, מוצא לכם את אותו מוצר <b>בזול יותר</b>, ואפילו מזהה מוצר <b>מתמונה</b>. הכל בצ'אט פשוט בעברית, ב-AliExpress, Temu, Amazon ו-eBay.</p>
       <div class="cta-row">
         <a href="#pricing" class="btn-primary">נסו עכשיו</a>
         <a href="#how" class="btn-ghost">איך זה עובד?</a>
@@ -299,10 +316,10 @@
           <span class="verdict bad">⚠️ בזהירות — לא הייתי ממהר</span>
           <ul>
             <li>👍 סוללה שמחזיקה, חיבור מהיר</li>
-            <li>👎 ‏37% מהביקורות: אוזן אחת מפסיקה לעבוד תוך חודש</li>
+            <li>👎 ‏37% מהביקורות של כוכב אחד: אוזן אחת מפסיקה לעבוד תוך חודש</li>
             <li>🤖 <span class="pill warn">חשד</span> ‏~400 ביקורות חיוביות בנוסח כמעט זהה</li>
           </ul>
-          <div style="margin-top:8px">מצאתי דגם דומה ואמין יותר ב-₪52 עם ביקורות אמיתיות. להראות?</div>
+          <div style="margin-top:8px">מצאתי דגם דומה ואמין יותר ב-<b>₪52</b> · ⭐4.8 · 21K נמכרו. להראות?</div>
         </div>
       </div>
     </div>
@@ -321,13 +338,50 @@
     <div class="sec-head reveal">
       <span class="eyebrow">מה הוא עושה בשבילכם</span>
       <h2>יועץ קניות שקרא הכל לפניכם</h2>
-      <p>במקום לגלול מאות ביקורות בשפה זרה — שאלה אחת בצ'אט ומקבלים תשובה.</p>
+      <p>במקום לגלול מאות ביקורות בשפה זרה, ולחפש ידנית איפה זול יותר — שאלה אחת בצ'אט, ותשובה כנה.</p>
     </div>
     <div class="feat-grid">
-      <div class="card reveal"><div class="ic">🔍</div><h3>ניתוח ביקורות אמיתי</h3><p>קורא מאות ביקורות, מסכם את מה שחוזר לטובה ולרעה, ומצביע על התלונות המהותיות — איכות, עמידות, מידות וזמן משלוח.</p></div>
+      <div class="card span2 reveal">
+        <span class="tagline">היכולת שאף אתר לא ייתן לכם</span>
+        <div class="ic pop">⚠️</div>
+        <h3>צולל לביקורות השליליות</h3>
+        <p>האתרים מראים לכם קודם את הביקורות היפות. קונים חכם פותח דווקא את ה-1 וה-2 כוכבים — <b>התלונות האמיתיות</b> — וחושף מה שחוזר: מוצר שלא תואם לתיאור, נשבר תוך חודש, מידה לא נכונה. בדיוק מה שהיה גורם לכם להתחרט.</p>
+      </div>
+      <div class="card reveal"><div class="ic">💰</div><h3>מוצא בזול יותר</h3><p>אותו מוצר (או שווה-ערך טוב יותר) במחיר נמוך יותר — גם באותו אתר וגם באתרים אחרים. מדרג לפי מחיר, דירוג וכמות נמכרו, ונותן קישור ישיר.</p></div>
+      <div class="card reveal"><div class="ic">📸</div><h3>חיפוש לפי תמונה</h3><p>ראיתם מוצר בכל אתר או ברשת? לחיצה ימנית על התמונה → "מצא כזה בזול". הבוט מזהה מה זה ומחפש אותו זול יותר ב-Temu וב-AliExpress.</p></div>
       <div class="card reveal"><div class="ic">🤖</div><h3>זיהוי ביקורות מזויפות</h3><p>מזהה דפוסים חשודים: ביקורות גנריות, נוסח חוזר וגל חיוביות לא טבעי — ומזהיר אתכם לפני שנפלתם בפח.</p></div>
-      <div class="card reveal"><div class="ic">💰</div><h3>השוואת מחירים (זאפ)</h3><p>בדף מוצר בזאפ — אומר לכם איפה הכי כדאי לקנות: משקלל מחיר מול אמינות החנות ומשלוח, ומזהיר מהצעה זולה בחשד.</p></div>
-      <div class="card reveal"><div class="ic">✅</div><h3>המלצה ברורה</h3><p>בלי לשבת על הגדר: שווה / בזהירות / לא מומלץ — עם נימוק קצר שאפשר להבין בשנייה.</p></div>
+      <div class="card reveal"><div class="ic">✅</div><h3>המלצה כנה</h3><p>בלי לשבת על הגדר ובלי להמציא: שווה / בזהירות / לא מומלץ — עם נימוק קצר, ותמיד ביחס למחיר. אם אין מספיק מידע, יגיד לכם.</p></div>
+      <div class="card reveal"><div class="ic">🕯️</div><h3>מתאים לכם</h3><p>עובד מצוין עם מסנני נטפרי, ומכבד שבת ומועדים — קישורי השותפים לא מסומנים בזמן שבת לפי המיקום שלכם.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" style="background:var(--brand-wash); border-block:1px solid var(--line);">
+  <div class="wrap">
+    <div class="hero-grid" style="align-items:center">
+      <div>
+        <span class="eyebrow">חדש · מצא בזול יותר</span>
+        <h2 style="font-size:clamp(28px,4.2vw,44px); margin-top:12px">מצאתם מוצר? <span class="hl">בדקו אם יש זול יותר</span> — בלחיצה.</h2>
+        <p class="lead" style="margin-top:18px; max-width:36ch">קונים חכם מחפש בתוך האתר שאתם גולשים בו (בסשן שלכם, בלי להיחסם) ומביא את אותו מוצר או חלופה טובה יותר — הזול ביותר <b>שהוא גם טוב</b>. לא הכי זול על חשבון איכות: הוא משקלל דירוג וכמות נמכרו.</p>
+        <div class="cta-row"><a href="#pricing" class="btn-primary">נסו עכשיו</a></div>
+      </div>
+      <div class="mock reveal" style="transform:rotate(-1.1deg)">
+        <div class="mock-top">
+          <span class="mark">💰</span>
+          <div><b>קונים חכם</b><br><small>חיפוש באתר · טאבלט · 40 תוצאות נסרקו</small></div>
+        </div>
+        <div class="mock-body">
+          <div class="b user">יש את הטאבלט הזה בזול יותר?</div>
+          <div class="b bot">
+            <span class="verdict">✅ מצאתי 2 חלופות טובות וזולות</span>
+            <ul>
+              <li><b>דגם Plus</b> — ₪600 · ⭐4.7 · 523 נמכרו <span class="pill good">אחסון כפול</span></li>
+              <li><b>דגם PC</b> — ₪582 · ⭐4.5 · 310 נמכרו</li>
+            </ul>
+            <div style="margin-top:8px">המחיר הנוכחי (₪770) הוגן, אבל ה-Plus נותן יותר באותו כסף. קישור ישיר 👇</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -335,13 +389,13 @@
 <section class="pad" id="how" style="background:var(--paper); border-block:1px solid var(--line);">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">שלוש דקות ואתם בפנים</span>
+      <span class="eyebrow">דקה ואתם בפנים</span>
       <h2>איך זה עובד</h2>
     </div>
     <div class="steps">
       <div class="step reveal"><div class="num">1</div><h3>גולשים כרגיל</h3><p>נכנסים לדף מוצר ב-AliExpress, Temu, Amazon או eBay — בדיוק כמו תמיד.</p></div>
-      <div class="step reveal"><div class="num">2</div><h3>שואלים את הבוט</h3><p>פותחים את הצ'אט בלחיצה, ושואלים "שווה לקנות?" — הוא קורא את הביקורות מהעמוד.</p></div>
-      <div class="step reveal"><div class="num">3</div><h3>מקבלים החלטה</h3><p>תוך שניות מקבלים המלצה ברורה עם יתרונות, חסרונות ואזהרות — וקונים בראש שקט.</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>שואלים את הבוט</h3><p>פותחים את הצ'אט בלחיצה, ושואלים "שווה לקנות?" או "יש בזול יותר?" — הוא קורא, סורק ומחפש בשבילכם.</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>מקבלים החלטה</h3><p>תוך שניות: יתרונות, חסרונות אמיתיים, אזהרות ומחיר טוב יותר אם קיים — וקונים בראש שקט.</p></div>
     </div>
   </div>
 </section>
@@ -357,7 +411,6 @@
       <div class="site-chip">🟠 Temu</div>
       <div class="site-chip">📦 Amazon</div>
       <div class="site-chip">🔨 eBay</div>
-      <div class="site-chip">👗 Shein</div>
       <div class="site-chip">💰 זאפ · השוואת מחירים</div>
       <div class="site-chip">➕ ועוד בקרוב</div>
     </div>
@@ -367,33 +420,52 @@
 <section class="pad" id="pricing" style="background:var(--paper); border-block:1px solid var(--line);">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">מנוי פשוט</span>
-      <h2>בוחרים תוכנית ומתחילים לחסוך</h2>
-      <p>הזמנה כושלת אחת כבר עולה יותר מהמנוי החודשי.</p>
+      <span class="eyebrow">תשלום גמיש</span>
+      <h2>מתחילים חינם, משלמים לפי השימוש</h2>
+      <p>הזמנה כושלת אחת כבר עולה יותר מחודש שלם של קונים חכם.</p>
     </div>
+
+    <div class="pay-how reveal">
+      כל ניתוח, חיפוש או זיהוי-תמונה = <b>קרדיט אחד</b>. מקבלים <b>10 קרדיטים חינם</b> להתחלה — בלי כרטיס אשראי. אחר כך בוחרים: חבילת קרדיטים לפי הצורך, או מנוי חודשי ללא הגבלה.
+    </div>
+
     <div class="price-grid">
       <div class="plan reveal">
-        <h3>חודשי</h3>
+        <h3>התחלה</h3>
+        <div class="sub">להתנסות, בלי התחייבות</div>
+        <div class="amt">חינם</div>
+        <ul>
+          <li><span class="ck">✓</span> 10 קרדיטים חינם</li>
+          <li><span class="ck">✓</span> כל היכולות פתוחות</li>
+          <li><span class="ck">✓</span> בלי כרטיס אשראי</li>
+          <li><span class="ck">✓</span> מרוויחים עוד קרדיטים בהזמנת חברים</li>
+        </ul>
+        <a href="#" class="buy alt">התקינו והתחילו</a>
+      </div>
+
+      <div class="plan reveal">
+        <h3>חבילות קרדיט</h3>
+        <div class="sub">משלמים רק על מה שמשתמשים</div>
+        <div class="packs">
+          <div class="pack-row"><div><b>15 קרדיטים</b><div class="pc">לשימוש קליל</div></div><span class="pp">₪5</span></div>
+          <div class="pack-row"><div><b>50 קרדיטים</b><div class="pc">הכי משתלם</div></div><span class="pp">₪15</span></div>
+          <div class="pack-row"><div><b>120 קרדיטים</b><div class="pc">מחיר לקרדיט הכי נמוך</div></div><span class="pp">₪30</span></div>
+        </div>
+        <a href="#" class="buy alt">קנו קרדיטים</a>
+      </div>
+
+      <div class="plan hot reveal">
+        <span class="tag">הכי משתלם לקבועים</span>
+        <h3>מנוי</h3>
+        <div class="sub">ללא הגבלה, בראש שקט</div>
         <div class="amt">₪6.90<small> / לחודש</small></div>
         <ul>
-          <li><span class="ck">✓</span> ניתוח ביקורות והמלצת קנייה</li>
-          <li><span class="ck">✓</span> השוואת מחירים בזאפ</li>
-          <li><span class="ck">✓</span> מציאת מוצר זול יותר באותו אתר</li>
-          <li><span class="ck">✓</span> התחברות מאובטחת עם גוגל</li>
+          <li><span class="ck">✓</span> ניתוחים וחיפושים ללא הגבלה</li>
+          <li><span class="ck">✓</span> כל היכולות, כולל זיהוי מתמונה</li>
+          <li><span class="ck">✓</span> עדיפות במהירות</li>
+          <li><span class="ck">✓</span> שנתי ₪59 — כ-₪4.9 לחודש</li>
         </ul>
-        <a href="#" class="buy alt">התחילו חודשי</a>
-      </div>
-      <div class="plan hot reveal">
-        <span class="tag">כ-3 חודשים חינם</span>
-        <h3>שנתי</h3>
-        <div class="amt">₪59<small> / לשנה</small></div>
-        <ul>
-          <li><span class="ck">✓</span> כל מה שבמסלול החודשי</li>
-          <li><span class="ck">✓</span> רק ₪4.9 לחודש בפועל</li>
-          <li><span class="ck">✓</span> עדיפות במהירות ניתוח</li>
-          <li><span class="ck">✓</span> גישה מוקדמת לאתרים חדשים</li>
-        </ul>
-        <a href="#" class="buy">התחילו שנתי</a>
+        <a href="#" class="buy">התחילו מנוי</a>
       </div>
     </div>
   </div>
@@ -406,9 +478,11 @@
       <h2>מה שרציתם לשאול</h2>
     </div>
     <div class="faq">
-      <details class="reveal"><summary>איך הבוט קורא את הביקורות בלי להיחסם?</summary><p>הוא פועל כתוסף בתוך הדפדפן שלכם, ולכן קורא את אותו עמוד שאתם כבר צופים בו — בלי לגרד מבחוץ ובלי להיחסם.</p></details>
-      <details class="reveal"><summary>האם צריך ידע טכני?</summary><p>לא. מתקינים פעם אחת, מתחברים עם גוגל, ומשם זה צ'אט פשוט בעברית.</p></details>
-      <details class="reveal"><summary>הביקורות בסינית או אנגלית — זה בעיה?</summary><p>ממש לא. הבוט מבין אותן ומסכם לכם בעברית ברורה.</p></details>
+      <details class="reveal"><summary>איך הבוט קורא את הביקורות בלי להיחסם?</summary><p>הוא פועל כתוסף בתוך הדפדפן שלכם, ולכן קורא וסורק את אותו עמוד שאתם כבר צופים בו — בלי לגרד מבחוץ ובלי להיחסם.</p></details>
+      <details class="reveal"><summary>מה זה "קרדיט"?</summary><p>יחידת שימוש אחת — ניתוח מוצר, חיפוש "בזול יותר" או זיהוי מתמונה. מתחילים עם 10 חינם, וממשיכים עם חבילה או מנוי לפי מה שנוח לכם.</p></details>
+      <details class="reveal"><summary>זה עובד עם מסנן נטפרי?</summary><p>כן. בנוי במיוחד כך שכל הקישורים נשארים על הדומיין המקורי של האתר (בלי דומייני הפניה חסומים), כך שהכל עובד חלק גם מאחורי הסינון.</p></details>
+      <details class="reveal"><summary>ומה עם שבת?</summary><p>הבוט מכבד שבת ומועדים לפי המיקום שלכם — בזמן שבת קישורי השותפים לא מסומנים, כדי שלא תהיה פעולה עסקית בשבת.</p></details>
+      <details class="reveal"><summary>הביקורות בסינית או אנגלית — זו בעיה?</summary><p>ממש לא. הבוט מבין אותן ומסכם לכם בעברית ברורה.</p></details>
       <details class="reveal"><summary>מה קורה אם אין מספיק ביקורות?</summary><p>הבוט יאמר לכם את זה בכנות ולא ימציא — כי המטרה היא שתסמכו עליו.</p></details>
     </div>
   </div>
