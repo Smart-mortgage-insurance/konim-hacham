@@ -208,8 +208,11 @@
   .sites { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
   .site-chip {
     background: var(--paper); border: 1px solid var(--line); border-radius: 999px;
-    padding: 12px 22px; font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 8px;
+    padding: 11px 22px; font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 9px;
   }
+  .site-chip .site-logo { height: 22px; width: auto; display: block; }
+  .site-chip .temu-mark { width: 24px; height: 24px; border-radius: 7px; background: #FB7701; color: #fff;
+    font-weight: 900; font-size: 14px; display: grid; place-items: center; }
 
   /* pricing */
   .pay-how { max-width: 620px; margin: 0 auto 40px; text-align: center; background: var(--paper);
@@ -416,10 +419,10 @@
       <h2>האתרים הנתמכים</h2>
     </div>
     <div class="sites reveal">
-      <div class="site-chip">🛍️ AliExpress</div>
-      <div class="site-chip">🟠 Temu</div>
-      <div class="site-chip">📦 Amazon</div>
-      <div class="site-chip">🔨 eBay</div>
+      <div class="site-chip"><img class="site-logo" src="logo-aliexpress.svg" alt="AliExpress" /> AliExpress</div>
+      <div class="site-chip"><span class="temu-mark">T</span> Temu</div>
+      <div class="site-chip"><img class="site-logo" src="logo-amazon.svg" alt="Amazon" /> Amazon</div>
+      <div class="site-chip"><img class="site-logo" src="logo-ebay.svg" alt="eBay" /> eBay</div>
       <div class="site-chip">➕ ועוד בקרוב</div>
     </div>
   </div>
@@ -499,7 +502,10 @@
     <div class="final reveal">
       <h2>הזמנה חכמה מתחילה בשאלה אחת</h2>
       <p>הצטרפו לקונים שכבר מפסיקים להתחרט על הזמנות מאכזבות.</p>
-      <a href="#pricing" class="btn-primary">התחילו עם קונים חכם</a>
+      <div class="cta-row" style="justify-content:center">
+        <a href="#pricing" class="btn-primary">התחילו עם קונים חכם</a>
+        <a href="madrich.pdf" target="_blank" rel="noopener" class="btn-ghost">📖 הורדת המדריך</a>
+      </div>
     </div>
   </div>
 </section>
