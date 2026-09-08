@@ -571,19 +571,21 @@
 </script>
 
 <script>
-  /* קישור-הפניה: קורא ?ref=CODE, מעביר את הקוד לתוסף (אם מותקן), ומעתיק ללוח כגיבוי.
-     כך חבר שמגיע דרך קישור-הזמנה — הקוד מוחל אוטומטית בלי הקלדה. */
+  /* קישור-הפניה: קורא ?ref=CODE ומחיל את הקוד אוטומטית, בלי הקלדה.
+     - אם התוסף כבר מותקן: נשלח ישירות (externally_connectable) + נלכד ע"י refcatch.js.
+     - אם עדיין לא מותקן: נשמר ב-localStorage, ו-refcatch.js קורא אותו אחרי ההתקנה
+       (הרקע פותח את הדף הזה בהתקנה). כך הקוד לא הולך לאיבוד. */
   (function () {
     try {
       var ref = new URLSearchParams(location.search).get("ref");
       if (!ref) return;
       ref = ref.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 12);
       if (!ref) return;
+      try { localStorage.setItem("konim_ref", ref); } catch (e) {} // שורד עד אחרי ההתקנה
       var EXT_ID = "cphldniedimjdlpokmolmlkgdhclfjap"; // מזהה התוסף בחנות
       if (window.chrome && chrome.runtime && chrome.runtime.sendMessage) {
         try { chrome.runtime.sendMessage(EXT_ID, { type: "REFERRAL", code: ref }, function () { void chrome.runtime.lastError; }); } catch (e) {}
       }
-      try { navigator.clipboard && navigator.clipboard.writeText(ref); } catch (e) {}
       /* באנר-ידידותי קטן */
       var b = document.createElement("div");
       b.textContent = "🎁 הוזמנת ע\"י חבר! התקינו את קונים חכם והקוד יוחל אוטומטית (" + ref + ")";
