@@ -1,0 +1,29 @@
+name: keep-alive
+
+# שומר על שרת קונים-חכם "ער" (Render חינמי נכבה אחרי ~15 דק' חוסר-פעילות,
+# והבקשה שמעירה אותו איטית ולעיתים נכשלת עם "Failed to fetch").
+# רץ בשעות-הפעילות בישראל (~06:00–24:00) כדי לחסוך בשעות-ה-instance של Render.
+
+on:
+  schedule:
+    - cron: '*/10 3-21 * * *'   # כל 10 דק', 03:00–21:00 UTC ≈ 06:00–24:00 שעון ישראל
+  workflow_dispatch: {}          # אפשר גם להריץ ידנית לבדיקה
+
+permissions:
+  contents: read
+
+concurrency:
+  group: keep-alive
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping /health (twice, ~5 min apart, to survive schedule drift)
+        run: |
+          for i in 1 2; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' -m 40 https://konim-hacham.onrender.com/health || echo "000")
+            echo "ping $i -> HTTP $code at $(date -u)"
+            if [ "$i" = "1" ]; then sleep 300; fi
+          done
