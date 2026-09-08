@@ -117,6 +117,24 @@
     padding: 15px 24px; border-radius: 999px; font-weight: 700; font-size: 17px;
     border: 1.5px solid var(--line); color: var(--ink); background: var(--paper);
   }
+  /* כפתור-מדריך צף — תמיד גלוי בגלילה, נצמד לצד המסך (RTL: ימין) */
+  .guide-fab {
+    position: fixed; top: 50%; right: 0; transform: translateY(-50%);
+    z-index: 9999; display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(140deg, var(--brand), var(--brand-deep)); color: #fff;
+    text-decoration: none; font-weight: 800; font-size: 15px; line-height: 1.2;
+    padding: 13px 18px; border-radius: 14px 0 0 14px;
+    box-shadow: -3px 3px 16px rgba(0,0,0,.22);
+    transition: padding .15s ease, filter .15s ease;
+  }
+  .guide-fab:hover { filter: brightness(1.06); padding-right: 24px; }
+  @media (max-width: 640px) {
+    .guide-fab {
+      top: auto; bottom: 16px; right: 50%; transform: translateX(50%);
+      border-radius: 999px; font-size: 14px; padding: 12px 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+    }
+  }
   .trust { display: flex; align-items: center; gap: 10px; margin-top: 26px; font-size: 14px; color: var(--muted); }
   .trust .stars { color: var(--star); letter-spacing: 1px; }
 
@@ -495,11 +513,11 @@
       </div>
     </div>
 
-    <div class="cta-row reveal" style="justify-content:center; margin-top:10px;">
-      <a href="madrich.pdf" target="_blank" rel="noopener" class="btn-ghost">📖 הורדת המדריך המלא (PDF)</a>
-    </div>
   </div>
 </section>
+
+<!-- כפתור-מדריך צף — תמיד גלוי בגלילה -->
+<a href="madrich.pdf" target="_blank" rel="noopener" class="guide-fab" aria-label="הורדת מדריך ההתקנה (PDF)">📖 מדריך התקנה</a>
 
 <section class="pad">
   <div class="wrap">
