@@ -554,24 +554,29 @@
   </div>
 </footer>
 
-<!-- הערת גרסת-הרצה (Beta) — קופצת פעם אחת, נסגרת ונזכרת -->
-<div id="betaNote" dir="rtl" style="position:fixed;left:14px;right:14px;bottom:14px;z-index:99999;max-width:680px;margin:0 auto;background:#ffffff;border:1px solid #d7e6dd;border-right:7px solid #0f9d6e;border-radius:16px;box-shadow:0 20px 55px -16px rgba(15,60,45,.4);padding:20px 22px 18px;font-family:'Heebo',system-ui,Arial,sans-serif;display:none">
-  <button id="betaClose" aria-label="סגור" style="position:absolute;top:10px;left:12px;background:none;border:none;font-size:26px;line-height:1;color:#9aa8a1;cursor:pointer">×</button>
-  <div style="font-family:'Suez One',serif;color:#0a6b4c;font-size:20px;margin-bottom:8px">🚧 גרסת הרצה</div>
-  <div style="font-size:14px;color:#26332e;line-height:1.65">
-    „קונים חכם" נמצא כעת בשלב <b>הרצה (Beta)</b>. מערכת רכישת המנויים והקרדיטים תיפתח <b>לאחר חג הסוכות</b>.<br>
-    עד אז — כל משתמש מקבל <b>10 קרדיטים חינם</b>, וניתן לצבור עוד ב<b>הזמנת חברים</b>.<br>
-    ייתכנו שגיאות בגרסה הנוכחית. משתמשים רציניים שמעוניינים לבחון את הכלי ולשלוח הערות לשיפורו — מוזמנים לפנות לקבלת <b>קרדיטים נוספים לפי הצורך</b>:
-    <a href="mailto:mim.smart.systems@gmail.com?subject=בקשת%20קרדיטים%20-%20קונים%20חכם%20(הרצה)" style="color:#0f9d6e;font-weight:800;white-space:nowrap">mim.smart.systems@gmail.com</a>
+<!-- הערת גרסת-הרצה (Beta) — מודאל במרכז הדף, נפתח בכל כניסה -->
+<div id="betaOverlay" dir="rtl" style="position:fixed;inset:0;z-index:99999;background:rgba(8,32,24,.6);display:none;align-items:center;justify-content:center;padding:20px">
+  <div id="betaCard" style="position:relative;max-width:600px;width:100%;max-height:90vh;overflow:auto;background:#fff;border-top:10px solid #0f9d6e;border-radius:22px;box-shadow:0 34px 90px -22px rgba(0,0,0,.55);padding:46px 46px 38px;font-family:'Heebo',system-ui,Arial,sans-serif">
+    <button id="betaClose" aria-label="סגור" style="position:absolute;top:14px;left:18px;background:none;border:none;font-size:34px;line-height:1;color:#9aa8a1;cursor:pointer">×</button>
+    <div style="font-family:'Suez One',serif;color:#0a6b4c;font-size:40px;text-align:center;margin-bottom:22px">🚧 גרסת הרצה</div>
+    <div style="font-size:21px;color:#25332e;line-height:1.75">
+      „קונים חכם" נמצא כעת בשלב <b>הרצה (Beta)</b>. מערכת רכישת המנויים והקרדיטים תיפתח <b>לאחר חג הסוכות</b>.<br><br>
+      עד אז — כל משתמש מקבל <b>10 קרדיטים חינם</b>, וניתן לצבור עוד ב<b>הזמנת חברים</b>.<br><br>
+      ייתכנו שגיאות בגרסה הנוכחית. משתמשים רציניים שמעוניינים לבחון את הכלי ולשלוח הערות לשיפורו — מוזמנים לפנות לקבלת <b>קרדיטים נוספים לפי הצורך</b>:<br>
+      <a href="mailto:mim.smart.systems@gmail.com?subject=בקשת%20קרדיטים%20-%20קונים%20חכם%20(הרצה)" style="color:#0f9d6e;font-weight:800">mim.smart.systems@gmail.com</a>
+    </div>
+    <button id="betaOk" style="display:block;margin:32px auto 0;background:linear-gradient(90deg,#0f9d6e,#12b47f);color:#fff;font-family:'Suez One',serif;font-size:26px;border:none;border-radius:16px;padding:18px 54px;cursor:pointer;box-shadow:0 14px 30px -10px rgba(15,157,110,.6)">הבנתי, בואו נתחיל</button>
   </div>
 </div>
 <script>
   (function(){
-    var n=document.getElementById('betaNote'); if(!n) return;
-    var seen=false; try{ seen=!!localStorage.getItem('konim_beta_seen'); }catch(e){}
-    if(!seen) setTimeout(function(){ n.style.display='block'; }, 1100);
-    function close(){ n.style.display='none'; try{ localStorage.setItem('konim_beta_seen','1'); }catch(e){} }
+    var ov=document.getElementById('betaOverlay'); if(!ov) return;
+    // נפתח בכל כניסה לדף (בלי לזכור סגירה)
+    setTimeout(function(){ ov.style.display='flex'; }, 700);
+    function close(){ ov.style.display='none'; }
     document.getElementById('betaClose').addEventListener('click', close);
+    document.getElementById('betaOk').addEventListener('click', close);
+    ov.addEventListener('click', function(e){ if(e.target===ov) close(); }); // לחיצה על הרקע סוגרת
   })();
 </script>
 
