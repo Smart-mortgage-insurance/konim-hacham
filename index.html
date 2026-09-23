@@ -639,10 +639,17 @@
       var API = "https://konim-hacham.onrender.com";
       var p = new URLSearchParams(location.search);
       var src = (p.get("utm_source") || p.get("src") || "").slice(0, 40);
+      // אם אין תג-מקור מפורש (utm_source) — גוזרים את מקור-ההפניה החיצוני מ-document.referrer
+      // (למשל hagizra.co.il), כי ה-Referer של בקשת ה-hit הוא דף-הנחיתה עצמו ולא מאיפה שהגולש הגיע.
+      if (!src) {
+        try {
+          var rh = document.referrer ? new URL(document.referrer).hostname.replace(/^www\./, "") : "";
+          src = (rh && rh !== location.hostname) ? rh.slice(0, 40) : "direct";
+        } catch (e) { src = "direct"; }
+      }
       function hit(ev) {
         try {
-          var qs = [];
-          if (src) qs.push("ref=" + encodeURIComponent(src));
+          var qs = ["ref=" + encodeURIComponent(src)]; // תמיד שולחים מקור — שלא ייפול ל-Referer של הדף עצמו
           if (ev) qs.push("e=" + encodeURIComponent(ev));
           var url = API + "/api/hit" + (qs.length ? ("?" + qs.join("&")) : "");
           if (navigator.sendBeacon) navigator.sendBeacon(url);
