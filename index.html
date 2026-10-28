@@ -526,7 +526,7 @@
 </section>
 
 <!-- כפתור-מדריך צף — תמיד גלוי בגלילה -->
-<a href="madrich.pdf" target="_blank" rel="noopener" class="guide-fab" aria-label="הורדת מדריך ההתקנה (PDF)">📖 מדריך התקנה</a>
+<a href="madrich.pdf" target="_blank" rel="noopener" class="guide-fab" aria-label="הורדת מדריך השימוש (PDF)">📖 מדריך שימוש</a>
 
 <section class="pad">
   <div class="wrap">
@@ -648,7 +648,7 @@
         if (!a || !a.getAttribute("href")) return;
         var href = a.href || "";
         if (/chromewebstore\.google\.com/i.test(href)) hit("cta_install");     // התקנה/מנוי/קרדיטים
-        else if (/madrich\.pdf/i.test(href)) hit("cta_guide");                  // מדריך התקנה
+        else if (/madrich\.pdf/i.test(href)) hit("cta_guide");                  // מדריך שימוש
         else if (a.getAttribute("href") === "#pricing") hit("cta_pricing");     // מעבר לתמחור
       }, true);
     } catch (e) {}
