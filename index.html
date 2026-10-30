@@ -492,7 +492,7 @@
           <li><span class="ck">✓</span> בלי כרטיס אשראי</li>
           <li><span class="ck">✓</span> מרוויחים עוד קרדיטים בהזמנת חברים</li>
         </ul>
-        <a href="https://chromewebstore.google.com/detail/cphldniedimjdlpokmolmlkgdhclfjap" target="_blank" rel="noopener" class="buy alt">התקינו והתחילו</a>
+        <a id="freePlanBtn" href="https://chromewebstore.google.com/detail/cphldniedimjdlpokmolmlkgdhclfjap" target="_blank" rel="noopener" class="buy alt">התקינו והתחילו</a>
       </div>
 
       <div class="plan reveal">
@@ -504,7 +504,7 @@
           <div class="pack-row"><div><b>120 קרדיטים</b><div class="pc">הכי משתלם</div></div><span class="pp">₪30</span></div>
           <div class="pack-row"><div><b>220 קרדיטים</b><div class="pc">מחיר לקרדיט הכי נמוך</div></div><span class="pp">₪50</span></div>
         </div>
-        <a href="https://chromewebstore.google.com/detail/cphldniedimjdlpokmolmlkgdhclfjap" target="_blank" rel="noopener" class="buy alt">קנו קרדיטים</a>
+        <a href="https://konim-hacham.onrender.com/buy?kind=pack" target="_blank" rel="noopener" class="buy alt">קנו קרדיטים</a>
       </div>
 
       <div class="plan hot reveal">
@@ -518,7 +518,7 @@
           <li><span class="ck">✓</span> כל היכולות, כולל זיהוי מתמונה</li>
           <li><span class="ck">✓</span> עדיפות במהירות</li>
         </ul>
-        <a href="https://chromewebstore.google.com/detail/cphldniedimjdlpokmolmlkgdhclfjap" target="_blank" rel="noopener" class="buy">התחילו מנוי</a>
+        <a href="https://konim-hacham.onrender.com/buy?kind=sub" target="_blank" rel="noopener" class="buy">התחילו מנוי</a>
       </div>
     </div>
 
@@ -564,6 +564,14 @@
 </footer>
 
 
+
+<script>
+  (function(){
+    if (!/[?&]welcome=1/.test(location.search)) return;
+    var b = document.getElementById('freePlanBtn'); if (!b) return;
+    b.href = 'madrich.pdf'; b.textContent = '📖 איך מתחילים';
+  })();
+</script>
 
 <script>
   const io = new IntersectionObserver((entries) => {
@@ -648,6 +656,7 @@
         if (!a || !a.getAttribute("href")) return;
         var href = a.href || "";
         if (/chromewebstore\.google\.com/i.test(href)) hit("cta_install");     // התקנה/מנוי/קרדיטים
+        else if (/onrender\.com\/buy/i.test(href)) hit("cta_buy");            // רכישת קרדיטים/מנוי
         else if (/madrich\.pdf/i.test(href)) hit("cta_guide");                  // מדריך שימוש
         else if (a.getAttribute("href") === "#pricing") hit("cta_pricing");     // מעבר לתמחור
       }, true);
