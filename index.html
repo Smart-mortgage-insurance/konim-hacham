@@ -324,7 +324,7 @@
       <h1>לפני שאתם מזמינים — <span class="hl">תשאלו אותו</span> אם זה שווה.</h1>
       <p class="lead">קונים חכם קורא את <b>כל הביקורות — כולל השליליות</b>, מוצא לכם את אותו מוצר <b>בזול יותר</b>, ואפילו מזהה מוצר <b>מתמונה</b>. הכל בצ'אט פשוט בעברית, ב-AliExpress, Temu, Amazon ו-eBay.</p>
       <div class="cta-row">
-        <a href="#pricing" class="btn-primary">נסו עכשיו</a>
+        <a id="heroInstall" href="https://chromewebstore.google.com/detail/cphldniedimjdlpokmolmlkgdhclfjap" target="_blank" rel="noopener" class="btn-primary">התקינו מחנות Chrome</a>
         <a href="#how" class="btn-ghost">איך זה עובד?</a>
       </div>
       <div class="trust">
@@ -570,6 +570,7 @@
     if (!/[?&]welcome=1/.test(location.search)) return;
     var b = document.getElementById('freePlanBtn'); if (!b) return;
     b.href = 'madrich.pdf'; b.textContent = '📖 איך מתחילים';
+    var h = document.getElementById('heroInstall'); if (h) { h.href = 'madrich.pdf'; h.textContent = '📖 איך מתחילים'; }
   })();
 </script>
 
@@ -617,6 +618,11 @@
       var fit = function () { document.body.style.paddingBottom = (b.isConnected ? b.offsetHeight : 0) + "px"; };
       x.onclick = function () { b.remove(); fit(); };
       b.appendChild(x);
+      var go = document.createElement("a");
+      go.href = "https://chromewebstore.google.com/detail/cphldniedimjdlpokmolmlkgdhclfjap";
+      go.target = "_blank"; go.rel = "noopener"; go.textContent = "להתקנה מחנות Chrome";
+      go.style.cssText = "display:inline-block;margin-inline-start:12px;padding:4px 14px;border-radius:999px;background:#fff;color:#0b7a55;font-weight:700;text-decoration:none";
+      b.appendChild(go);
       document.body.appendChild(b);
       fit(); window.addEventListener("resize", fit);
     } catch (e) {}
